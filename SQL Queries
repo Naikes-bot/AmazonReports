@@ -1,0 +1,39 @@
+-- There are a total of 65422 orders in this Amazon Sales Report
+
+SELECT COUNT(*)
+FROM `Amazon Sales report`.`amazon sale report`;
+
+-- There are a total of 5834 orders that were cancelled 
+
+SELECT Status, COUNT(*) AS total_count
+FROM `Amazon Sales report`.`amazon sale report`
+WHERE Status = 'cancelled';
+
+-- Bengaluru has the highest purchase value from the list
+SELECT ship_city,
+      SUM(Amount) AS total_amount
+FROM `Amazon Sales report`.`amazon sale report`
+GROUP BY 1
+ORDER BY 2 DESC; 
+
+-- Maharashtra is the most profitable state with 7,142,644 Rupees
+ 
+SELECT ship_state, 
+       SUM(Amount) AS total_amount 
+FROM `Amazon Sales report`.`amazon sale report`
+GROUP BY 1
+ORDER BY 2 DESC; 
+
+-- 5th of April has the highest number of sales with a value of 5584 Rupees 
+
+SELECT Date, 
+       MAX(Amount)
+FROM `Amazon Sales report`.`amazon sale report`
+GROUP BY 1
+ORDER BY 2 DESC;
+
+-- Sales Amount for the month of April is 882059, 17 Rupees
+
+SELECT ROUND(SUM(Amount),2) AS total_amount
+FROM `Amazon Sales report`.`amazon sale report`
+WHERE MONTH(DATE) = 4; 
