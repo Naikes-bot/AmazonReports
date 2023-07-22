@@ -75,6 +75,8 @@ FROM `Amazon Sales report`.`amazon sale report`
 WHERE MONTH(DATE) = 5; 
 
 -- What is the total sales of kurtas in the month of May?
+-- The total sales of kurtas in the month of May was 270912.29 Rs
+
 
 SELECT Category, 
        ROUND(SUM(Amount), 2) AS total_amount
